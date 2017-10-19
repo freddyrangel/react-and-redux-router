@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+import Counter              from '../counter';
+import Voting               from '../voting';
 import * as AT              from '../../constants.js';
+import * as actions         from '../../actions';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      catCount: 1,
       showCounter: true,
       catData: { url: null }
     }
   }
-
-  incrementCatCount = () => {
-    this.setState({ catCount: this.state.catCount + 1 });
-  };
-
-  decrementCatCount = () => {
-    const { catCount } = this.state;
-    if (catCount > 0) {
-      this.setState({ catCount: this.state.catCount - 1 });
-    }
-  };
 
   toggle = () => this.setState({ showCounter: !this.state.showCounter });
 
@@ -51,9 +43,8 @@ export default class App extends Component {
   render() {
     const props = {
       ...this.state,
+      ...this.props,
       methods: {
-        incrementCatCount : this.incrementCatCount,
-        decrementCatCount : this.decrementCatCount,
         toggle            : this.toggle,
         fetchCatImage     : this.fetchCatImage,
         upvote            : this.upvote,
@@ -78,58 +69,8 @@ function Navigation({ showCounter, methods: { toggle } }) {
   </div>
 }
 
-function Counter(props) {
-  return <div className='counter'>
-    <CounterControls { ...props }/>
-    <CatImages { ...props }/>
-  </div>
+function mapStateToProps(state) {
+  return state;
 }
 
-function CounterControls({ methods: { incrementCatCount, decrementCatCount } }) {
-  return <div className='controls'>
-    <button onClick={ incrementCatCount }>More</button>
-    <button onClick={ decrementCatCount }>Less</button>
-  </div>
-}
-
-function CatImages({ catCount }) {
-  if (catCount < 1 ) return <h2>No Cats!</h2>;
-
-  const cats = [];
-
-  for (let i = 0; i < catCount; i++) {
-    cats.push(<CatImage key={ i }/>)
-  }
-
-  return <div className="cat-images">
-    { cats }
-  </div>
-}
-
-function CatImage({ url }) {
-  return <img src={ url || AT.CAT_IMAGE_URL } width='200' alt='Cat'/>
-}
-
-class Voting extends Component {
-
-  componentDidMount() {
-    this.props.methods.fetchCatImage();
-  }
-
-  render() {
-    const { url } = this.props.catData;
-    return <div className='voting-container'>
-      <VotingButtons { ...this.props }/>
-      <div className='cat-image'>
-        { !!url ? <CatImage url={ url } /> : <span>Loading...</span> }
-      </div>
-    </div>
-  }
-}
-
-function VotingButtons({ methods: { upvote, downvote } }) {
-  return <div className='vote-buttons'>
-    <button className='love-it' onClick={ upvote }>Love it!</button>
-    <button className='hate-it' onClick={ downvote }>Meh...</button>
-  </div>
-}
+export default connect(mapStateToProps, actions)(App);
