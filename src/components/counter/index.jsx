@@ -1,17 +1,20 @@
-import React    from 'react';
-import CatImage from '../cat-image'
+import React        from 'react';
+import { connect }  from 'react-redux';
+import CatImage     from '../cat-image'
+import * as actions from '../../actions';
 
-export default function Counter(props) {
+function Counter(props) {
   return <div className='counter'>
-    <CounterControls { ...props }/>
-    <CatImages { ...props }/>
+    <CounterControls incrementCatCount={ props.incrementCatCount }
+        decrementCatCount={ props.decrementCatCount }/>
+    <CatImages catCount={ props.catCount } />
   </div>
 }
 
-function CounterControls({ incrementCatCount, decrementCatCount }) {
+function CounterControls(props) {
   return <div className='controls'>
-    <button onClick={ incrementCatCount }>More</button>
-    <button onClick={ decrementCatCount }>Less</button>
+    <button onClick={ props.incrementCatCount }>More Cats</button>
+    <button onClick={ props.decrementCatCount }>Fewer Cats</button>
   </div>
 }
 
@@ -28,3 +31,9 @@ function CatImages({ catCount }) {
     { cats }
   </div>
 }
+
+function mapStateToProps({ catCount }) {
+  return { catCount };
+}
+
+export default connect(mapStateToProps, actions)(Counter);

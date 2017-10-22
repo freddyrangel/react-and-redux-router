@@ -1,43 +1,18 @@
-import React, { Component } from 'react';
-import { connect }          from 'react-redux';
-import Counter              from '../counter';
-import Voting               from '../voting';
-import * as actions         from '../../actions';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { showCounter: true };
-  }
-
-  toggle = () => this.setState({ showCounter: !this.state.showCounter });
-
-  render() {
-    const props = {
-      ...this.state,
-      ...this.props,
-      toggle: this.toggle
-    }
-
-    const childComponent = this.state.showCounter
-      ? <Counter { ...props }/>
-      : <Voting { ...props }/>
-    return <div className='app'>
-      <h1>Cat-Tastrophe</h1>
-      <Navigation { ...props }/>
-      { childComponent }
-    </div>
-  }
-}
-
-function Navigation({ showCounter, toggle }) {
-  return <div className='navigation'>
-    <button onClick={ toggle }>Go To { showCounter ? 'Voting' : 'Counter' }</button>
+export default function App({ children }) {
+  return <div className='app'>
+    <h1>Cat-Tastrophe</h1>
+    <Navigation/>
+    { children }
   </div>
 }
 
-function mapStateToProps(state) {
-  return state;
+function Navigation() {
+  return <div className='navigation'>
+    <Link to='/voting'>Voting</Link>
+    <Link to='/counter'>Counter</Link>
+  </div>
 }
 
-export default connect(mapStateToProps, actions)(App);

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 import CatImage             from '../cat-image'
+import * as actions         from '../../actions';
 
-export default class Voting extends Component {
+class Voting extends Component {
   componentDidMount() {
     this.props.fetchCatImage();
   }
@@ -23,3 +25,10 @@ function VotingButtons({ upvote, downvote }) {
     <button className='hate-it' onClick={ downvote }>Meh...</button>
   </div>
 }
+
+function mapStateToProps({ catData }) {
+  return { catData };
+}
+
+export default connect(mapStateToProps, actions)(Voting)
+
