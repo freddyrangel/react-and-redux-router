@@ -3,7 +3,7 @@ import CatImage             from '../cat-image'
 
 export default class Voting extends Component {
   componentDidMount() {
-    this.props.methods.fetchCatImage();
+    this.props.fetchCatImage();
   }
 
   render() {
@@ -17,7 +17,7 @@ export default class Voting extends Component {
   }
 }
 
-function VotingButtons({ methods: { upvote, downvote } }) {
+function VotingButtons({ upvote, downvote }) {
   return <div className='vote-buttons'>
     <button className='love-it' onClick={ upvote }>Love it!</button>
     <button className='hate-it' onClick={ downvote }>Meh...</button>
