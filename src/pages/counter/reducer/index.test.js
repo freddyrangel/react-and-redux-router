@@ -1,5 +1,5 @@
 import countReducer from './index';
-import * as actions from '../../../actions';
+import * as actions from '../actions';
 
 describe('Count Reducer', () => {
   it('should increment count', () => {

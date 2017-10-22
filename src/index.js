@@ -4,18 +4,18 @@ import ReactDOM            from 'react-dom';
 import { Route }           from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider }        from 'react-redux';
-import App                 from './components/app';
-import Counter             from './components/counter';
-import Voting              from './components/voting';
+import Layout              from './common/layout';
+import Counter             from './pages/counter';
+import Voting              from './pages/voting';
 import { store, history }  from './store';
 
 const application = <Provider store={ store }>
   <ConnectedRouter history={ history }>
-    <App>
+    <Layout>
       <Route path='/' exact   component={ Counter } />
       <Route path='/counter'  component={ Counter } />
       <Route path='/voting'   component={ Voting } />
-    </App>
+    </Layout>
   </ConnectedRouter>
 </Provider>;
 

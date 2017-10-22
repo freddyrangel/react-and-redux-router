@@ -1,7 +1,7 @@
 import React        from 'react';
 import { connect }  from 'react-redux';
-import CatImage     from '../cat-image'
-import * as actions from '../../actions';
+import CatImage     from '../../common/cat-image'
+import * as actions from './actions';
 
 function Counter(props) {
   return <div className='counter'>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default function App({ children }) {
+export default function Layout({ children }) {
   return <div className='app'>
     <h1>Cat-Tastrophe</h1>
     <Navigation/>

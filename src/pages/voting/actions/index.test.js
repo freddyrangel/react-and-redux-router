@@ -1,4 +1,4 @@
-import * as AT      from '../constants';
+import * as AT      from '../../../constants';
 import * as actions from './index.js';
 
 describe('Actions', () => {
