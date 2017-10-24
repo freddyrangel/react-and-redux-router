@@ -33,5 +33,5 @@ layout.
 * [Simple Redux Setup](https://github.com/modern-front-end/react-and-redux-router/compare/1723e30e23dc71fc322462863ed801cbc3a4c537...1040bffc5324bc446c20c003ea44817b0fe56c3e)
 * [Redux Middleware](https://github.com/modern-front-end/react-and-redux-router/compare/1040bffc5324bc446c20c003ea44817b0fe56c3e...bc812e61311fbe4636cb10916b067ea6665c1e3f)
 * [Redux Thunk](https://github.com/modern-front-end/react-and-redux-router/compare/bc812e61311fbe4636cb10916b067ea6665c1e3f...453ca009a0657caf3c74bf0bd22d0cec2e1e086e)
-* [React Redux](https://github.com/modern-front-end/react-and-redux-router/compare/453ca009a0657caf3c74bf0bd22d0cec2e1e086e...a87143979c4f12761bb395c9f2bcde097262efab)
+* [React Router](https://github.com/modern-front-end/react-and-redux-router/compare/453ca009a0657caf3c74bf0bd22d0cec2e1e086e...a87143979c4f12761bb395c9f2bcde097262efab)
 * [Organizing by Pages](https://github.com/modern-front-end/react-and-redux-router/compare/a87143979c4f12761bb395c9f2bcde097262efab...06209581b22bd80b5a29fa2552e5ef7ff5d4fac6)
